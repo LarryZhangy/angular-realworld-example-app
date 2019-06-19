@@ -1,0 +1,25 @@
+{{- if .Values.service.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ .Values.appName }}
+  name: {{ .Values.appName }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+  {{- if .Values.service.enableHttp }}
+  - name: https
+    port: {{ .Values.service.externalPort.https }}
+    protocol: TCP
+    targetPort: {{ .Values.containerPort.https }}
+  {{- end }}
+  {{- if .Values.service.enableHttps }}
+  - name: http
+    port: {{ .Values.service.externalPort.http }}
+    protocol: TCP
+    targetPort: {{ .Values.containerPort.http }}
+  {{- end }}
+  selector:
+    app: {{ .Values.appName }}
+{{- end }}

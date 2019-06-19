@@ -1,0 +1,19 @@
+{{- if .Values.ingress.enabled -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.appName }}
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.ingress.class }}
+  labels:
+    app: {{ .Values.appName }}
+spec:
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Values.appName }}
+          servicePort: {{ .Values.service.externalPort.http }}
+{{- end -}}

@@ -1,0 +1,61 @@
+appName: default-app-name
+
+replicaCount: 1
+minReadySeconds: 10
+maxSurge: 1
+maxUnavailable: 1
+
+podAnnotations: {}
+
+image:
+  repository:
+  tag:
+  pullPolicy: Always
+
+env: {}
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1024Mi
+  requests:
+    cpu: 400m
+    memory: 512Mi  
+
+containerPort:
+  http: 8080
+  https: 8443
+
+livenessProbe:
+  enabled: false 
+  failureThreshold: 3
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+  port: 10254
+  path: /health
+readinessProbe:
+  enabled: false
+  failureThreshold: 3
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
+  port: 10254
+  path: /health
+
+service:
+  enabled: false
+  enableHttp: true
+  enableHttps: true
+  type: ClusterIP
+  externalPort:
+    http: 8080
+    https: 8433
+
+ingress:
+  enabled: true
+  class:
+  host:
+  
