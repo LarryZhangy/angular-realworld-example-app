@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://rw-backend.example.com/'
+  api_url: 'http://rw-backend.devcloud.freemyip.com/'
 };
