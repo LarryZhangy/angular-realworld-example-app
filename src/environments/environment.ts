@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://f1-backend.realworld.huawei.com/'
+  api_url: 'http://test-backend.realworld.huawei.com/'
 };
