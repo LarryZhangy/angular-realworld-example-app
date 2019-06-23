@@ -5,7 +5,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod  --base-href ./ && cp CNAME dist/CNAME",
+    "build": "ng build --base-href ./ ",
+    "build-stage": "ng build  --configuration=staging  --base-href ./ && cp CNAME dist/CNAME",
+    "build-prod": "ng build  --configuration=production  --base-href ./ && cp CNAME dist/CNAME",
     "test": "ng test",
     "lint": "ng lint --force",
     "e2e": "ng e2e"
