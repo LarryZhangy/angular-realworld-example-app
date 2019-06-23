@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  api_url: 'http://backend-stage-devcloud.huawei.com'
+  production: false,
+  api_url: 'http://stage-backend.realworld.huawei.com'
 };
